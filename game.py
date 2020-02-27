@@ -8,3 +8,4 @@ class Game:
     def __init__(self):
 # -------- Générer notre joueur lors d'une nouvelle partie
         self.player = Player()
+        self.pressed = {}

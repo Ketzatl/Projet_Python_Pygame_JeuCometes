@@ -29,6 +29,13 @@ while running:
     # appliquer l'image du joueur -------- (par dessus le background)
     screen.blit(game.player.image, game.player.rect)
 
+    # véfifier si le joueur veut aller à gauche ou à droite
+
+    if game.pressed.get(pygame.K_RIGHT):
+        game.player.move_right()
+
+    elif game.pressed.get(pygame.K_LEFT):
+        game.player.move_left()
 
 
     # mettre à jour l'écran
@@ -36,7 +43,20 @@ while running:
 
     # verification si le joueur ferme cette fenêtre
     for event in pygame.event.get():
+
         # verification si l'event est : fermeture de fenêtre
         if event.type == pygame.QUIT:
             running = False
             pygame.quit()
+            print("Fin de Partie")
+
+        # détecter si le joueur lache une touche du clavier
+        elif event.type == pygame.KEYDOWN:
+
+            game.pressed[event.key] = True
+
+        elif event.type == pygame.KEYUP:
+
+            game.pressed[event.key] = False
+
+
